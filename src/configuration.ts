@@ -3,10 +3,11 @@ import * as koa from '@midwayjs/koa';
 import * as validate from '@midwayjs/validate';
 import * as info from '@midwayjs/info';
 import { join } from 'path';
+import * as swagger from '@midwayjs/swagger';
+import * as orm from '@midwayjs/orm';
 // import { DefaultErrorFilter } from './filter/default.filter';
 // import { NotFoundFilter } from './filter/notfound.filter';
 import { ReportMiddleware } from './middleware/report.middleware';
-import * as orm from '@midwayjs/orm';
 
 @Configuration({
   imports: [
@@ -17,6 +18,7 @@ import * as orm from '@midwayjs/orm';
       enabledEnvironment: ['local'],
     },
     orm,
+    swagger,
   ],
   importConfigs: [join(__dirname, './config')],
 })

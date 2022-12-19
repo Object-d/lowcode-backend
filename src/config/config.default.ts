@@ -5,5 +5,6 @@ export default {
   keys: '1671438193181_8929',
   koa: {
     port: 7001,
+    globalPrefix: '/api/v1',
   },
 } as MidwayConfig;

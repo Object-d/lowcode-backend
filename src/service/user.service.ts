@@ -8,13 +8,13 @@ import { UserModel } from '../model/user';
 export class UserService {
   @InjectEntityModel(UserModel) userModel: Repository<UserModel>;
 
+  async getUsers() {
+    const [data, count] = await this.userModel.findAndCount()
+    return { data, total: count }
+  }
+
   async getUser(options: IUserOptions) {
-    return {
-      uid: options.uid,
-      username: 'mockedName',
-      phone: '12345678901',
-      email: 'xxx.xxx@xxx.com',
-    };
+    return this.userModel.findOne({ where: { id: options.uid } })
   }
 
   async addUser() {

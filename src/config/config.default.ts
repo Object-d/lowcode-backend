@@ -12,8 +12,8 @@ export default {
     host: '127.0.0.1',
     port: 3306,
     username: 'root',
-    password: '', // 数据库密码
-    database: 'midway', // 数据表
+    password: '123456', // 数据库密码
+    database: 'lowcode', // 数据表
     synchronize: true,
     logging: false,
   },

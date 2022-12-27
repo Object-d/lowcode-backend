@@ -39,6 +39,7 @@ export class AdminUserModel extends BaseModel {
     type: 'varchar',
     length: 255,
     comment: '头像',
+    nullable: true,
   })
   avatar: string;
 
@@ -47,6 +48,7 @@ export class AdminUserModel extends BaseModel {
     length: 100,
     comment: '记住token',
     name: 'remember_token',
+    nullable: true,
   })
   rememberToken: string;
 

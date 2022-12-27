@@ -16,6 +16,7 @@ export class AdminLogModel extends BaseModel {
     type: 'integer',
     name: 'user_id',
     comment: '用户ID',
+    nullable: true,
   })
   userId: string;
 

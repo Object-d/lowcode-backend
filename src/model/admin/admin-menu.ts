@@ -33,6 +33,7 @@ export class AdminMenuModel extends BaseModel {
     type: 'integer',
     name: 'permission_id',
     comment: '权限ID',
+    nullable: true,
   })
   permissionId: string;
 

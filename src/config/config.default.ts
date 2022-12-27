@@ -17,4 +17,24 @@ export default {
     synchronize: true,
     logging: false,
   },
+  passport: {
+    session: false,
+  },
+  jwt: {
+    secret: '123456XXXM',
+    expiresIn: 11111, //60 * 60 * 24 * 1,
+  },
+  redis: {
+    client: {
+      port: 6379, // Redis port
+      host: '127.0.0.1', // Redis host
+      //password: 'auth',
+      db: 0,
+    },
+  },
+  swagger: {
+    auth: {
+      authType: 'bearer',
+    },
+  },
 } as MidwayConfig;

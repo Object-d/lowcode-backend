@@ -5,9 +5,14 @@ import * as info from '@midwayjs/info';
 import { join } from 'path';
 import * as swagger from '@midwayjs/swagger';
 import * as orm from '@midwayjs/orm';
-// import { DefaultErrorFilter } from './filter/default.filter';
-// import { NotFoundFilter } from './filter/notfound.filter';
+import * as jwt from '@midwayjs/jwt';
+import * as passport from '@midwayjs/passport';
+import * as redis from '@midwayjs/redis';
 import { ReportMiddleware } from './middleware/report.middleware';
+import { DefaultErrorFilter } from './filter/default.filter';
+import { NotFoundFilter } from './filter/notfound.filter';
+import { JwtPassportMiddleware } from './middleware/jwt.middleware';
+import { LogMiddleware } from './middleware/logs.middleware';
 
 @Configuration({
   imports: [
@@ -19,6 +24,9 @@ import { ReportMiddleware } from './middleware/report.middleware';
     },
     orm,
     swagger,
+    jwt,
+    redis,
+    passport,
   ],
   importConfigs: [join(__dirname, './config')],
 })
@@ -28,8 +36,12 @@ export class ContainerLifeCycle {
 
   async onReady() {
     // add middleware
-    this.app.useMiddleware([ReportMiddleware]);
+    this.app.useMiddleware([
+      ReportMiddleware,
+      JwtPassportMiddleware,
+      LogMiddleware,
+    ]);
     // add filter
-    // this.app.useFilter([NotFoundFilter, DefaultErrorFilter]);
+    this.app.useFilter([NotFoundFilter, DefaultErrorFilter]);
   }
 }
